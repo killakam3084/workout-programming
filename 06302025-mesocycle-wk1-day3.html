@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Workout - Day 3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #2d3748;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+            border: 1px solid #4a5568;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+            background: #2d3748;
+        }
+        
+        .muscle-group {
+            background: #1a202c;
+            border-left: 5px solid #e53e3e;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid #4a5568;
+        }
+        
+        .muscle-group h2 {
+            color: #f7fafc;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .exercise {
+            background: #4a5568;
+            border: 2px solid #718096;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .exercise:hover {
+            border-color: #e53e3e;
+            box-shadow: 0 4px 12px rgba(229, 62, 62, 0.2);
+            background: #5a6570;
+        }
+        
+        .exercise h3 {
+            color: #f7fafc;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .exercise-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #cbd5e0;
+            min-width: 80px;
+        }
+        
+        .info-value {
+            background: #1a202c;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            color: #f7fafc;
+            border: 1px solid #4a5568;
+        }
+        
+        .sets-reps {
+            background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+            color: white;
+            border: 1px solid #38a169;
+        }
+        
+        .weight {
+            background: linear-gradient(135deg, #d69e2e 0%, #b7791f 100%);
+            color: white;
+            border: 1px solid #d69e2e;
+        }
+        
+        .video-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            border: 1px solid #e53e3e;
+        }
+        
+        .video-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(229, 62, 62, 0.4);
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+        }
+        
+        .notes {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            border: 2px solid #4a5568;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .notes h2 {
+            color: #f7fafc;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .notes ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .notes li {
+            background: #4a5568;
+            margin: 8px 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border-left: 4px solid #e53e3e;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+        
+        .notes li:before {
+            content: "💡";
+            margin-right: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #1a202c;
+            border-top: 1px solid #4a5568;
+        }
+        
+        .footer p {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #f7fafc;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .muscle-group {
+                padding: 20px;
+            }
+            
+            .exercise {
+                padding: 15px;
+            }
+            
+            .exercise-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Today's Workout - Day 3</h1>
+            <p>Glutes Primary + Secondary Work - Let's get it! 🔥</p>
+        </div>
+        
+        <div class="content">
+            <div class="muscle-group">
+                <h2>🍑 Glutes Primary</h2>
+                
+                <div class="exercise">
+                    <h3>Cable Pull Through</h3>
+                    <div class="exercise-info">
+                        <div class="info-item">
+                            <span class="info-label">Set 1:</span>
+                            <span class="info-value sets-reps">35 lbs × 9 reps</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Set 2:</span>
+                            <span class="info-value sets-reps">42.5 lbs × 8 reps</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Set 3:</span>
+                            <span class="info-value sets-reps">42.5 lbs × 8 reps</span>
+                        </div>
+                    </div>
+                    <a href="#" target="_blank" class="video-link">📹 Watch Technique</a>
+                </div>
+                
+                <div class="exercise">
+                    <h3>Extra ROM lying hip abduction (weighted)</h3>
+                    <div class="exercise-info">
+                        <div class="info-item">
+                            <span class="info-label">Set 1:</span>
+                            <span class="info-value sets-reps">Bodyweight × 12 reps</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Set 2:</span>
+                            <span class="info-value sets-reps">Bodyweight × 11 reps</span>
+                        </div>
+                    </div>
+                    <a href="#" target="_blank" class="video-link">📹 Watch Technique</a>
+                </div>
+            </div>
+            
+            <div class="muscle-group">
+                <h2>💪 Shoulders Secondary</h2>
+                
+                <div class="exercise">
+                    <h3>Cable Lateral Raise (Single-Arm)</h3>
+                    <div class="exercise-info">
+                        <div class="info-item">
+                            <span class="info-label">Set 1:</span>
+                            <span class="info-value sets-reps">3 lbs × 13 reps</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Set 2:</span>
+                            <span class="info-value sets-reps">7 lbs × 9 reps</span>
+                        </div>
+                    </div>
+                    <a href="#" target="_blank" class="video-link">📹 Watch Technique</a>
+                </div>
+            </div>
+            
+            <div class="muscle-group">
+                <h2>💪 Back Secondary</h2>
+                
+                <div class="exercise">
+                    <h3>Pullup (Weighted, Underhand Grip)</h3>
+                    <div class="exercise-info">
+                        <div class="info-item">
+                            <span class="info-label">Sets × Reps:</span>
+                            <span class="info-value sets-reps">2 × 7</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Weight:</span>
+                            <span class="info-value weight">Bodyweight</span>
+                        </div>
+                    </div>
+                    <a href="#" target="_blank" class="video-link">📹 Watch Technique</a>
+                </div>
+            </div>
+            
+            <div class="muscle-group">
+                <h2>💪 Chest Secondary</h2>
+                
+                <div class="exercise">
+                    <h3>Pushup (Weighted, Narrow Grip)</h3>
+                    <div class="exercise-info">
+                        <div class="info-item">
+                            <span class="info-label">Set 1:</span>
+                            <span class="info-value sets-reps">Bodyweight × 11 reps</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Set 2:</span>
+                            <span class="info-value sets-reps">Bodyweight × 9 reps</span>
+                        </div>
+                    </div>
+                    <a href="#" target="_blank" class="video-link">📹 Watch Technique</a>
+                </div>
+            </div>
+            
+            <div class="muscle-group">
+                <h2>💪 Abs Secondary</h2>
+                
+                <div class="exercise">
+                    <h3>V-Up (Weighted)</h3>
+                    <div class="exercise-info">
+                        <div class="info-item">
+                            <span class="info-label">Sets × Reps:</span>
+                            <span class="info-value sets-reps">2 × 9</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Weight:</span>
+                            <span class="info-value weight">8 lbs</span>
+                        </div>
+                    </div>
+                    <a href="#" target="_blank" class="video-link">📹 Watch Technique</a>
+                </div>
+            </div>
+            
+            <div class="notes">
+                <h2>💡 Quick Notes</h2>
+                <ul>
+                    <li>Glutes are primary today - focus on mind-muscle connection!</li>
+                    <li>Cable pull throughs: feel the stretch at the bottom</li>
+                    <li>Hip abductions: control the negative, squeeze at the top</li>
+                    <li>Single-arm exercises: complete all reps on one side before switching</li>
+                    <li>Weighted bodyweight movements: focus on form over load</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Time to build those glutes! 🍑💪</p>
+        </div>
+    </div>
+</body>
+</html>
